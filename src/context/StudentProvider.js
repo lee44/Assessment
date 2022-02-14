@@ -5,6 +5,7 @@ const StudentContext = createContext([]);
 
 export const StudentProvider = ({ children }) => {
 	const [profiles, setProfiles] = useState([]);
+	const [search, setSearch] = useState('');
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -14,7 +15,7 @@ export const StudentProvider = ({ children }) => {
 		fetchData();
 	}, []);
 
-	return <StudentContext.Provider value={{ profiles }}>{children}</StudentContext.Provider>;
+	return <StudentContext.Provider value={{ profiles, setProfiles, search, setSearch }}>{children}</StudentContext.Provider>;
 };
 
 export const useStudentContext = () => {
