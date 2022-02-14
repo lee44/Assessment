@@ -1,5 +1,5 @@
-import axios from "axios";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import axios from 'axios';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const StudentContext = createContext([]);
 
@@ -8,8 +8,7 @@ export const StudentProvider = ({ children }) => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await axios.get("https://api.hatchways.io/assessment/students");
-			console.log(response.data.students);
+			const response = await axios.get('https://api.hatchways.io/assessment/students');
 			setProfiles(response.data.students);
 		};
 		fetchData();
@@ -21,7 +20,7 @@ export const StudentProvider = ({ children }) => {
 export const useStudentContext = () => {
 	const context = useContext(StudentContext);
 	if (context === undefined) {
-		throw new Error("useAuth can only be used inside AuthProvider");
+		throw new Error('useAuth can only be used inside AuthProvider');
 	}
 	return context;
 };
