@@ -24,7 +24,7 @@ const Profiles = () => {
 				{filteredData.map((student) => {
 					return (
 						<>
-							<ProfileItem key={student.id} student={student}></ProfileItem>
+							<ProfileItem key={student.id} student={student} />
 							<hr></hr>
 						</>
 					);
