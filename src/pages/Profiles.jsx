@@ -6,15 +6,23 @@ import { useStudentContext } from '../context/StudentProvider';
 const Profiles = () => {
 	const { profiles, searchName, setSearchName, searchTag, setSearchTag } = useStudentContext();
 
+	const findTags = (element, tag) => {
+		return element?.tag?.find((element) => {
+			if (element.includes(tag)) {
+				return true;
+			}
+			return false;
+		});
+	};
 	const filteredData = profiles.filter((el) => {
 		if (searchName === '' && searchTag === '') {
 			return el;
 		} else if (searchName !== '' && searchTag !== '') {
-			return el.firstName.toLowerCase().includes(searchName) && el?.tag?.includes(searchTag);
+			return el.firstName.toLowerCase().includes(searchName) && findTags(el, searchTag) !== undefined;
 		} else if (searchName !== '' && searchTag === '') {
 			return el.firstName.toLowerCase().includes(searchName);
 		} else {
-			return el?.tag?.includes(searchTag);
+			return findTags(el, searchTag) !== undefined;
 		}
 	});
 
