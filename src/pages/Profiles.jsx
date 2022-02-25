@@ -27,14 +27,14 @@ const Profiles = () => {
 	});
 
 	return (
-		<div className='container mx-auto h-screen-75% w-1/2 flex flex-col rounded-lg bg-white'>
+		<div className='container mx-auto h-screen-75% w-1/2 min-w-[525px] flex flex-col rounded-lg bg-white'>
 			<Input setHook={setSearchName} placeHolder='Search by Name' />
 			<Input setHook={setSearchTag} placeHolder='Search by Tag' />
 			<div className='mt-2 overflow-auto scrollbar-hide'>
-				{filteredData.map((student) => {
+				{filteredData.map((student, index) => {
 					return (
 						<>
-							<Item key={student.id} student={student} />
+							<Item student={student} />
 							<hr></hr>
 						</>
 					);
